@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Manager</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="modal">
+            <h1>Password Security Assessment</h1>
+            <p>I would like to help you assess the security of your password.<br><br>
+            A good password should have atleast 1 the following: 
+            <ul>
+                <li>12 characters</li>
+                <li>uppercase letter</li>
+                <li>lowercase letter</li>
+                <li>special character</li>
+                <li>number</li>
+            </ul>
+            </p>
+            <form method="POST">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required><br><br>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </div>
+
+    {% if result %}
+    <div class="container">
+        <div class="modal result-container">
+            <h3>Feedback:</h3>
+            <p>{{ result | safe }}</p>
+            <button>
+            <a href="{{ url_for('home') }}" class="button">Back to Home</a>
+            </button>
+        </div>
+    </div>
+    {% endif %}
+</body>
+</html>
